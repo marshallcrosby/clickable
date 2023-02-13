@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin: 0; padding: 30px;">
+    <div style="display: flex; gap: 30px;">
+        <div class="clickable" style="border: 1px solid blue; padding: 30px; width: 50%" data-view-markup="render-in-page;">
+            <h2 style="margin-top: 0;">Will navigation to only hyperlink</h2>
+            <a href="https://google.com">Google</a>
+        </div>
+        
+        <div class="single-click" style="border: 1px solid blue; padding: 30px; width: 50%" data-view-markup="render-in-page;">
+            <h2 style="margin-top: 0;">Will navigation to the first hyperlink</h2>
+            <a href="https://yahoo.com" target="_blank">Yahoo</a>
+            <a href="https://google.com" target="_blank">Google</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/marshallcrosby/view-markup@1.6.5/dist/js/view-markup.min.js" integrity="sha384-nRODDc5erNpmEyQpTit83zfGZqIL0avrO/Ol8RF/y6yqiaxvSIKMksV9R1I9suqR" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="clickable.js"></script>
+    <script>
+        $(function () {
+            $('.single-click').each(function() {
+                $(this)[0].clickable();
+            });
+        });
+    </script>
+</body>
+</html>
