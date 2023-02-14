@@ -5,17 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="clickable.css">
+    <style>
+        .clickable,
+        .single-click {
+            border: 1px solid blue;
+            padding: 24px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 30px;">
-    <div style="display: flex; gap: 30px;">
-        <div class="clickable" style="border: 1px solid blue; padding: 30px; width: 50%" data-view-markup="render-in-page;">
-            <h2 style="margin-top: 0;">Will navigation to only hyperlink</h2>
+<body style="margin: 0; padding: 24px;">
+    <div style="display: flex; gap: 24px;">
+        <div class="clickable" data-view-markup="render-in-page;">
+            <h2>Click anywhere inside blue border</h2>
             <a href="https://google.com">Google</a>
         </div>
         
-        <div class="single-click" style="border: 1px solid blue; padding: 30px; width: 50%" data-view-markup="render-in-page;">
-            <h2 style="margin-top: 0;">Will navigation to the first hyperlink</h2>
+        <div class="single-click" data-view-markup="render-in-page;">
+            <h2>Navigation to the first hyperlink</h2>
+            <p>Clicking anywhere inside the blue border will take you to the first link. The second link is still functional by clicking directly on it</p>
             <a href="https://yahoo.com" target="_blank">Yahoo</a>
+            <br>
             <a href="https://google.com" target="_blank">Google</a>
         </div>
     </div>

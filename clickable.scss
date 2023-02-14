@@ -1,0 +1,25 @@
+.clickable {
+    --clickable-focus-box-shadow: 0 0 0 2px rgba(0, 0, 0, .5);
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: var(--clickable-focus-box-shadow);
+    }
+
+    &:focus-within {
+        box-shadow: var(--clickable-focus-box-shadow);
+    }
+
+    &:focus-within a:focus {
+        text-decoration: none;
+        outline: 0;
+    }
+    
+    a {
+        text-decoration: none;
+
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+}
