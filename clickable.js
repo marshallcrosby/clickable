@@ -7,8 +7,7 @@
 */
 
 Element.prototype.clickable = function () {
-    const $this = this;
-    const targetLink = $this.querySelectorAll('a')[0];
+    const targetLink = this.querySelectorAll('a')[0];
     
     let click = {
         down: null,
@@ -16,16 +15,16 @@ Element.prototype.clickable = function () {
         middle: null,
         aux: null,
         hyperlink: null
-    }
+    };
 
-    $this.addEventListener('mousedown', function (e) {
+    this.addEventListener('mousedown', function (e) {
         click.down = + new Date();
         click.middle = (e.which === 2) ? true : false;
         click.aux = (e.which === 3) ? true : false;
         click.hyperlink = (e.target.tagName.toLowerCase() === 'a') ? true : false;
     });
 
-    $this.addEventListener('mouseup', function () {
+    this.addEventListener('mouseup', function () {
         click.up = + new Date();
 
         if (
