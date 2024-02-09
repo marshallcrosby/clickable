@@ -15,27 +15,64 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            cursor: pointer;
         }
     </style>
 </head>
 <body style="margin: 0; padding: 24px;">
     <div style="display: flex; gap: 24px;">
-        <div class="clickable" data-view-markup="render-in-page;">
-            <h2>Click anywhere inside blue border</h2>
+        <div class="clickable" data-view-markup="btn-x: 10px; btn-y: 10px;" style="width: 100%">
+            <h2>Navigation to the last hyperlink</h2>
+            <p>Clicking anywhere inside the blue border will take you to the only link inside the clickable element.</p>
             <a href="https://google.com">Google</a>
         </div>
         
-        <div class="single-click" data-view-markup="render-in-page;">
-            <h2>Navigation to the first hyperlink</h2>
-            <p>Clicking anywhere inside the blue border will take you to the first link. The second link is still functional by clicking directly on it</p>
-            <a href="https://yahoo.com" target="_blank">Yahoo</a>
+        <div class="single-click" data-view-markup="btn-x: 10px; btn-y: 10px;" data-clickable-pos="1" style="width: 100%">
+            <h2>Navigation to the last hyperlink</h2>
+            <p>Clicking anywhere inside the blue border will take you to the last link. The second link is still functional by clicking directly on it</p>
+            <a href="https://yahoo.com" target="_blank">
+                Yahoo
+                <span>></span>
+                <img src="https://picsum.photos/10/10" alt="">
+                <svg class="btn-new__icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" xml:space="preserve" width="16" height="16">
+                    <style type="text/css">
+                        .arrow-line { fill:none; stroke:#2D2D2D; stroke-width:1.5; stroke-linecap:round; stroke-miterlimit:10; }
+                    </style>
+                    <polyline class="arrow-line" points="8.4,4.5 12,8 8.4,11.5 "></polyline>
+                    <line class="arrow-line" x1="12" y1="8" x2="4" y2="8"></line>
+                    <circle class="arrow-line" cx="8" cy="8" r="7.2"></circle>
+                </svg>
+            </a>
             <br>
             <a href="https://google.com" target="_blank">Google</a>
         </div>
+        
+        <div class="single-click" data-view-markup="btn-x: 10px; btn-y: 10px;" data-clickable-pos="first" style="width: 100%">
+            <h2>Navigation to the first hyperlink</h2>
+            <p>Clicking anywhere inside the blue border will take you to the first link. The second link is still functional by clicking directly on it</p>
+            <a href="https://yahoo.com" target="_blank">
+                Yahoo
+                <span>></span>
+                <svg class="btn-new__icon-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" xml:space="preserve" width="16" height="16">
+                    <style type="text/css">
+                        .arrow-line { fill:none; stroke:#2D2D2D; stroke-width:1.5; stroke-linecap:round; stroke-miterlimit:10; }
+                    </style>
+                    <polyline class="arrow-line" points="8.4,4.5 12,8 8.4,11.5 "></polyline>
+                    <line class="arrow-line" x1="12" y1="8" x2="4" y2="8"></line>
+                    <circle class="arrow-line" cx="8" cy="8" r="7.2"></circle>
+                </svg>
+            </a>
+            <br>
+            <a href="https://google.com" target="_blank">
+                Google
+                <span>></span>
+                <img src="https://picsum.photos/10/10" alt="">
+            </a>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/marshallcrosby/view-markup@1.6.5/dist/js/view-markup.min.js" integrity="sha384-nRODDc5erNpmEyQpTit83zfGZqIL0avrO/Ol8RF/y6yqiaxvSIKMksV9R1I9suqR" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/marshallcrosby/view-markup@latest/dist/js/view-markup.min.js?dynamic-position&modal-nav"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="clickable.js"></script>
     <script>
         $(function () {

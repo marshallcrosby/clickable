@@ -1,43 +1,49 @@
 /*!
-    * Clickable v0.0.1
+    * Clickable v0.0.2
     * Click on or anywhere inside a specified element, with a hyperlink, will fire that hyperlink.
     *
-    * Copyright 2021-2023 Blend Interactive
+    * Copyright 2021-2024 Blend Interactive
     * https://blendinteractive.com
 */
 
 Element.prototype.clickable = function () {
-    const targetLink = this.querySelectorAll('a')[0];
-    
+    const posAttr = this.getAttribute('data-clickable-pos');
+    const posIndex = (posAttr === 'first') ? 0 : (posAttr === 'last') ? targetLink.length - 1 : posAttr;
+    const pos = (posIndex !== null) ? posIndex : 0;
+    const targetLink = this.querySelectorAll('a')[pos];
+
     let click = {
-        down: null,
-        up: null,
+        downTime: null,
+        upTime: null,
         middle: null,
         aux: null,
-        hyperlink: null
+        hyperlink: null,
+        otherLinksClicked: null
     };
 
-    this.addEventListener('mousedown', function (e) {
-        click.down = + new Date();
-        click.middle = (e.which === 2) ? true : false;
-        click.aux = (e.which === 3) ? true : false;
+    this.addEventListener('mousedown', (e) => {
+        click.downTime = + new Date();
+        click.middle = (e.button === 2) ? true : false;
+        click.aux = (e.button === 3) ? true : false;
         click.hyperlink = (e.target.tagName.toLowerCase() === 'a') ? true : false;
+        click.otherLinksClicked = (!e.target === targetLink && e.target.matches('a') || e.target.closest('a')) ? true : false;
     });
-
-    this.addEventListener('mouseup', function () {
-        click.up = + new Date();
-
+    
+    this.addEventListener('mouseup', () => {
+        click.upTime = + new Date();
+        
         if (
-            (click.up - click.down) < 300 &&
+            (click.upTime - click.downTime) < 400 &&
             !click.aux &&
-            !click.hyperlink
+            !click.hyperlink &&
+            !click.otherLinksClicked
         ) {
             targetLink.click();
         }
     });
 }
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
     const singleClickEl = document.querySelectorAll('.clickable');
     singleClickEl.forEach(item => item.clickable());
 });
