@@ -1,5 +1,5 @@
 /*!
-    * Clickable v0.0.2
+    * Clickable v0.0.3
     * Click on or anywhere inside a specified element, with a hyperlink, will fire that hyperlink.
     *
     * Copyright 2021-2024 Blend Interactive
@@ -7,10 +7,11 @@
 */
 
 Element.prototype.clickable = function () {
+    const targetLinks = this.querySelectorAll('a');
     const posAttr = this.getAttribute('data-clickable-pos');
-    const posIndex = (posAttr === 'first') ? 0 : (posAttr === 'last') ? targetLink.length - 1 : posAttr;
+    const posIndex = (posAttr === 'first') ? 0 : (posAttr === 'last') ? targetLinks.length - 1 : posAttr;
     const pos = (posIndex !== null) ? posIndex : 0;
-    const targetLink = this.querySelectorAll('a')[pos];
+    const targetLink = targetLinks[pos];
 
     let click = {
         downTime: null,
